@@ -1,17 +1,19 @@
-import { prisma } from "../lib/prisma"
+import { prisma } from "../lib/prisma.js"
 
 export const attachUser = async (req, res, next) => {
 
     try {
         const clerkId = req.auth.userId;
 
+        console.log('thhe clerk id is ' ,clerkId)
+
         let user = await prisma.user.findUnique({
-            where: { clerkId }
+            where: { clerkId:String(clerkId)  }
         })
 
         if (!user) {
             user = await prisma.user.create({
-                data: { clerkId }
+                data: { clerkId :String(clerkId) }
             })
         }
 
