@@ -5,10 +5,11 @@ import { useAuth } from "@clerk/clerk-react";
 
 function App() {
   const { getToken } = useAuth();
-
+  // const [tokken, settokken] = useState('')
   const checkingTheAuth = async () => {
     try {
       const token = await getToken();
+      // settokken(token)
       const result = await axios.post(
         `http://localhost:8000/api/user/register`,
         {}, 

@@ -43,8 +43,8 @@ model History {
   subject     String
   difficulty  String
   notes       String
-  userId      Int
+  userClerkId String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  userHistory User     @relation(fields: [userId], references: [id])
+  userHistory User     @relation(fields: [userClerkId], references: [clerkId])
 }
